@@ -15,7 +15,8 @@ app.get('/beverages', beverages.findAll);
 app.post('/beverages', beverages.addBeverage);
 // app.put('/beverages/:id', beverages.updateWine);
 // app.delete('/beverages/:id', beverages.deleteWine);
-
+app.get('/bev_orders', beverages.findAllBevOrders);
+app.post('/bev_orders', beverages.addBeverageOrder);
 
 ///////////////////////////////////
 // Starts a UNIX socket and listens 
