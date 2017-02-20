@@ -1,5 +1,3 @@
-/// var express = require('express')
-// var bodyParser= require('body-parser')
 var restify = require('restify');
 var beverages = require('./routes/beverages');
 
@@ -19,20 +17,8 @@ if (cluster.isMaster) {
   });
 } else {
 
-// var app = express();
-// app.use(bodyParser.json());
-
 /////////
 // Routes
-
-// app.get('/beverages', beverages.findAll);
-// // app.get('/beverages/:id', beverages.findById);
-// app.post('/beverages', beverages.addBeverage);
-// // app.put('/beverages/:id', beverages.updateWine);
-// // app.delete('/beverages/:id', beverages.deleteWine);
-// app.get('/bev_orders', beverages.findAllBevOrders);
-// app.post('/bev_orders', beverages.addBeverageOrder);
-
 
 var server = restify.createServer();
 server.use(restify.bodyParser());
@@ -42,10 +28,6 @@ server.post('/beverages', beverages.addBeverage);
 server.get('/bev_orders', beverages.findAllBevOrders);
 server.post('/bev_orders', beverages.addBeverageOrder);
 
-///////////////////////////////////
-// Starts a UNIX socket and listens 
-// for connections on the given path
-//app.listen(3000);
 server.listen(3000);
 console.log('Listening on port 3000...');
 

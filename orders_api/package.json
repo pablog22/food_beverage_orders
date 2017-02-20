@@ -6,8 +6,6 @@
   "author": "Pablo Grasso",
   "private": true,
   "dependencies": {
-    // "body-parser": "^1.16.1",
-    // "express": "^4.14.1",
     "mongodb": "^2.2.24",
     "restify": "^4.3.0"
   },
