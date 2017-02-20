@@ -1,5 +1,4 @@
 var restify = require('restify');
-var beverages = require('./routes/beverages');
 
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
@@ -19,6 +18,8 @@ if (cluster.isMaster) {
 
 /////////
 // Routes
+
+var beverages = require('./routes/beverages');
 
 var server = restify.createServer();
 server.use(restify.bodyParser());
