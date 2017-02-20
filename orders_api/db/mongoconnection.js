@@ -5,7 +5,7 @@ var Server = mongo.Server,
 
 var serverOptions = {
     'auto_reconnect': true,
-    'poolSize': 5
+    'poolSize': 20
 };
 
 var server = new Server('localhost', 27017, serverOptions);
