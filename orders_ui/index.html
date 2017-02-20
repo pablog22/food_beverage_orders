@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="bevStore">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <body class="container" ng-controller="StoreController as store">
+    <h1>Venta de bebidas alcoholicas</h1>
+    <!--  Products Container  -->
+    <div class="list-group">
+        <!--  Product Container  -->
+        <div class="list-group-item product" ng-repeat="product in store.products">
+            <h3>
+                {{product.description}}
+                <em class="pull-right">{{product.price | currency}}</em>
+            </h3>
+            <!--<div class="small-image thumbnail">
+                <img class="img-rounded" ng-src="{{product.image}}" alt="Product image">
+            </div>-->
+        </div>
+    </div>
+  </body>
+</html>
