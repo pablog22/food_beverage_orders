@@ -36,14 +36,14 @@ exports.findAllBevOrders = function (req, res) {
 
 exports.addBeverageOrder = function (req, res) {
     var order = req.body;
-    console.log('Adding beverage order: ' + JSON.stringify(order));
+    //console.log('Adding beverage order: ' + JSON.stringify(order));
     ordercoll.insertOne(order, 
     function (err, result) {
         if (err) {
             res.send({ 'error': 'An error has occurred whle inserting a new beverage order.' });
         } else {
             //console.log('Success: ' + JSON.stringify(result[0]));
-            console.log('Success: ' + result.insertedCount + ' documents.');
+            //console.log('Success: ' + result.insertedCount + ' documents.');
             res.send(result.ops[0]);
         }
     });
