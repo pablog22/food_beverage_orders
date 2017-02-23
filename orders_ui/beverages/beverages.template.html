@@ -1,0 +1,25 @@
+<!--  Products Container  -->
+<div class="list-group">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Seleccion de productos</div>
+
+        <!-- Table -->
+        <table class="table products-table">
+            <tr>
+                <td>Producto</td>
+                <td>Precio unitario</td>
+                <td>Cantidad</td>
+                <td>Precio total</td>
+                <td></td>
+            </tr>
+            <tr ng-repeat="product in $ctrl.products">
+                <td>{{product.description}}</td>
+                <td>{{product.price | currency}}</td>
+                <td>0</td>
+                <td>{{45 | currency}}</td>
+                <td>Add to cart</td>
+            </tr>
+        </table>
+    </div>
+</div>
