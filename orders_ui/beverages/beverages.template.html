@@ -3,7 +3,7 @@
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">
-            <input ng-model="$ctrl.query" placeholder="Qué estás buscando?"/>
+            <input ng-model="$ctrl.query" placeholder="Qué estás buscando?" />
         </div>
 
         <!-- Table -->
@@ -18,9 +18,23 @@
             <tr ng-repeat="product in $ctrl.products | filter:$ctrl.query">
                 <td>{{product.type | uppercase}} {{product.description}}</td>
                 <td>{{product.price | currency}}</td>
-                <td>0</td>
-                <td>{{45 | currency}}</td>
-                <td>Add to cart</td>
+                <td>{{product.purchaseCount}}</td>
+                <td>{{product.purchaseTotal | currency}}</td>
+                <button type="button" class="btn btn-default">Default</button>
+                <td>
+                    <button type="button" class="btn btn-default" 
+                        ng-click="$ctrl.addToCart(product)">
+                        +
+                    </button>
+                    <button type="button" class="btn btn-default" 
+                        ng-click="$ctrl.removeFromCart(product)">
+                        -
+                    </button>
+                    <button type="button" class="btn btn-default" 
+                        ng-click="$ctrl.removeAllFromCart(product)">
+                        x
+                    </button>
+                </td>
             </tr>
         </table>
     </div>
