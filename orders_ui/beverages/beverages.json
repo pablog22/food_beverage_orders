@@ -1,6 +1,5 @@
 [
     {
-        "_id": "58aaec600a6c6a06245c51c2",
         "type": "whisky",
         "brand": "Grants",
         "description": "Grants 750cc",
@@ -10,7 +9,6 @@
         "image": "images/w_grants.jpg"
     },
     {
-        "_id": "58aaec620a6c6a06245c51c3",
         "type": "whisky",
         "brand": "Blenders",
         "description": "Blenders 750cc",
@@ -20,13 +18,39 @@
         "image": "images/w_blenders.jpg"
     },
     {
-        "_id": "58aaec650a6c6a06245c51c4",
         "type": "whisky",
         "brand": "Blenders",
         "description": "Blenders 1000cc",
         "cc": 1000,
         "code": "w_blenders_1000",
         "price": 154,
+        "image": "images/w_blenders.jpg"
+    },
+    {
+        "type": "tequila",
+        "brand": "Camacho",
+        "description": "Camacho 750cc",
+        "cc": 750,
+        "code": "t_camacho_750",
+        "price": 140,
+        "image": "images/w_blenders.jpg"
+    },
+    {
+        "type": "tequila",
+        "brand": "Jose Cuervo",
+        "description": "Jose Cuervo Oro 750cc",
+        "cc": 750,
+        "code": "t_jose_cuervo_oro_750",
+        "price": 630,
+        "image": "images/w_blenders.jpg"
+    },
+    {
+        "type": "tequila",
+        "brand": "Jose Cuervo",
+        "description": "Jose Cuervo Plata 750cc",
+        "cc": 750,
+        "code": "t_jose_cuervo_plata_750",
+        "price": 630,
         "image": "images/w_blenders.jpg"
     }
 ]
