@@ -15,6 +15,8 @@
             self.products = response.data;
         });
 
+        this.total = 0;
+
         this.calculateProductPurchaseTotal = function(product) {
             product.purchaseTotal = product.purchaseCount * product.price;
         }
@@ -26,20 +28,27 @@
                 product.purchaseCount += 1;
             }
 
-            this.calculateProductPurchaseTotal(product);
+            product.purchaseTotal += product.price;
+            this.total += product.price;
         };
 
         this.removeFromCart = function(product) {
             if (product.purchaseCount > 0) {
                 product.purchaseCount -= 1;
-            }
 
-            this.calculateProductPurchaseTotal(product);
+                product.purchaseTotal -= product.price;
+                this.total -= product.price;
+            }
+            
         };
 
         this.removeAllFromCart = function(product) {
-            product.purchaseCount=0;
-            this.calculateProductPurchaseTotal(product);
+            
+            if (product.purchaseCount > 0) {
+                this.total -= product.purchaseCount * product.price;
+                product.purchaseCount = 0;
+                product.purchaseTotal = 0;
+            }
         };
     };
 

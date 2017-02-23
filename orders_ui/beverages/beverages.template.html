@@ -4,6 +4,7 @@
         <!-- Default panel contents -->
         <div class="panel-heading">
             <input ng-model="$ctrl.query" placeholder="Qué estás buscando?" />
+            <span class="pull-right">Total {{$ctrl.total | currency}}</span>
         </div>
 
         <!-- Table -->
