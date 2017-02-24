@@ -1,15 +1,15 @@
 .products-table {
-    text-align: right; 
+  text-align: right; 
 }
 
 .products-table tr:first-child td {
-    font-weight: bold; 
+  font-weight: bold; 
 }
 
 .products-table tr td:first-child {
-    text-align: left;
+  text-align: left;
 }
 
 p.capitalize {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }

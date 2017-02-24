@@ -1,3 +1,3 @@
 (function () {
-    angular.module('beverages', []);
+  angular.module('beverages', []);
 })();
