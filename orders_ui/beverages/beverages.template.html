@@ -1,41 +1,37 @@
 <!--  Products Container  -->
 <div class="list-group">
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">
-            <input ng-model="$ctrl.query" placeholder="Qué estás buscando?" />
-            <span class="pull-right">Total {{$ctrl.total | currency}}</span>
-        </div>
-
-        <!-- Table -->
-        <table class="table products-table">
-            <tr>
-                <td>Producto</td>
-                <td>Precio unitario</td>
-                <td>Cantidad</td>
-                <td>Precio total</td>
-                <td></td>
-            </tr>
-            <tr ng-repeat="product in $ctrl.products | filter:$ctrl.query">
-                <td>{{product.type | uppercase}} {{product.description}}</td>
-                <td>{{product.price | currency}}</td>
-                <td ng-init="product.purchaseCount = 0">{{product.purchaseCount}}</td>
-                <td ng-init="product.purchaseTotal = 0">{{product.purchaseTotal | currency}}</td>
-                <td>
-                    <button type="button" class="btn btn-default" 
-                        ng-click="$ctrl.addToCart(product)">
-                        +
-                    </button>
-                    <button type="button" class="btn btn-default" 
-                        ng-click="$ctrl.removeFromCart(product)">
-                        -
-                    </button>
-                    <button type="button" class="btn btn-default" 
-                        ng-click="$ctrl.removeAllFromCart(product)">
-                        x
-                    </button>
-                </td>
-            </tr>
-        </table>
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      <input ng-model="$ctrl.query" placeholder="Qué estás buscando?" />
+      <span class="pull-right">Total {{$ctrl.total | currency}}</span>
     </div>
+
+    <!-- Table -->
+    <table class="table products-table">
+      <tr>
+        <td>Producto</td>
+        <td>Precio unitario</td>
+        <td>Cantidad</td>
+        <td>Precio total</td>
+        <td></td>
+      </tr>
+      <tr ng-repeat="product in $ctrl.products | filter:$ctrl.query">
+        <td>{{product.type | uppercase}} {{product.description}}</td>
+        <td>{{product.price | currency}}</td>
+        <td ng-init="product.purchaseCount = 0">{{product.purchaseCount}}</td>
+        <td ng-init="product.purchaseTotal = 0">{{product.purchaseTotal | currency}}</td>
+        <td>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default"
+              ng-click="$ctrl.addToCart(product)">+</button>
+            <button type="button" class="btn btn-default" 
+              ng-click="$ctrl.removeFromCart(product)">-</button>
+            <button type="button" class="btn btn-default"
+              ng-click="$ctrl.removeAllFromCart(product)">x</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
