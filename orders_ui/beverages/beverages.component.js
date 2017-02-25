@@ -11,7 +11,11 @@
 
     var self = this;
     
-    $http.get('beverages/beverages.json').then(function(response) {
+    // $http.get('beverages/beverages.json').then(function(response) {
+    //   self.products = response.data;
+    // });
+
+    $http.get('http://127.0.0.1:3000/beverages').then(function(response) {
       self.products = response.data;
     });
 
@@ -67,17 +71,25 @@
         }
       });
 
-      var order = 
+      var newOrder = 
         {
           "cust_id": this.cust_id,
           "beverages": beverages,
           "total": this.total
-        }
+        };
+      
+      $http.post('http://127.0.0.1:3000/bev_orders', newOrder).then(
+        function successCallback(response) {
+          $log.info("Order successfully created.");
+        },
+        function errorCallback(response){
+          $log.error("Error at creating order.")
+        });
       
       //$http.post()
-      $log.debug(order.cust_id);
-      $log.debug(order.beverages);
-      $log.debug(order.total);
+      $log.debug(newOrder.cust_id);
+      $log.debug(newOrder.beverages);
+      $log.debug(newOrder.total);
     };
 
   };
