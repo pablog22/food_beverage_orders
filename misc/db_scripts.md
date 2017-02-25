@@ -9,8 +9,8 @@ db.beverages.createIndex( { "code": 1 }, { unique: true } )
 db.beverages_orders.remove({})
 
 
-
-
+// Go wherever your json fis is and:
+mongoimport /v --jsonArray --db pedidos --collection beverages --file beverages.json
 
 
 
