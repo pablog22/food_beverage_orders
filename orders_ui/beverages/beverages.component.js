@@ -100,29 +100,17 @@
     };
 
     this.createSuccessAlert = function() {
-        $log.debug('About to insert element.');
-        var txt2 = $("<i></i>").text("love ");
-
         var divAlert = $('<div class="alert alert-success alert-dismissable fade in"></div>');
         divAlert.append($('<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'));
-        divAlert.append($('<span><strong>Genial!</strong> La orden se ha creado con exito.</span>'));
-
+        divAlert.append($('<span><strong>Genial!</strong> La orden se ha creado con éxito.</span>'));
         $('.alers-section').append(divAlert);
-        $log.debug('Element inserted.');
-
     };
 
     this.createFailAlert = function() {
-        $log.debug('About to insert element.');
-        var txt2 = $("<i></i>").text("love ");
-
         var divAlert = $('<div class="alert alert-danger alert-dismissable fade in"></div>');
         divAlert.append($('<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'));
         divAlert.append($('<span><strong>Error!</strong> Error al crear la orden.</span>'));
-
         $('.alers-section').append(divAlert);
-        $log.debug('Element inserted.');
-
     };
 
   }; // BeveragesController and
