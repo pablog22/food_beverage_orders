@@ -82,6 +82,7 @@
         function successCallback(response) {
           $log.info("Order successfully created.");
           self.createSuccessAlert();
+          self.resetOrder();
         },
         function errorCallback(response){
           $log.error("Error at creating order.")
@@ -89,6 +90,14 @@
         });
 
     }; // this.makeOrder end
+
+    this.resetOrder = function() {
+      this.products.forEach(function(product){
+        product.purchaseCount = 0;
+        product.purchaseTotal = 0;
+      });
+      this.total = 0;
+    };
 
     this.createSuccessAlert = function() {
         $log.debug('About to insert element.');
