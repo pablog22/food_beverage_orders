@@ -81,18 +81,41 @@
       $http.post('http://127.0.0.1:3000/bev_orders', newOrder).then(
         function successCallback(response) {
           $log.info("Order successfully created.");
+          self.createSuccessAlert();
         },
         function errorCallback(response){
           $log.error("Error at creating order.")
+          self.createFailAlert();
         });
-      
-      //$http.post()
-      $log.debug(newOrder.cust_id);
-      $log.debug(newOrder.beverages);
-      $log.debug(newOrder.total);
+
+    }; // this.makeOrder end
+
+    this.createSuccessAlert = function() {
+        $log.debug('About to insert element.');
+        var txt2 = $("<i></i>").text("love ");
+
+        var divAlert = $('<div class="alert alert-success alert-dismissable fade in"></div>');
+        divAlert.append($('<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'));
+        divAlert.append($('<span><strong>Genial!</strong> La orden se ha creado con exito.</span>'));
+
+        $('.alers-section').append(divAlert);
+        $log.debug('Element inserted.');
+
     };
 
-  };
+    this.createFailAlert = function() {
+        $log.debug('About to insert element.');
+        var txt2 = $("<i></i>").text("love ");
 
+        var divAlert = $('<div class="alert alert-danger alert-dismissable fade in"></div>');
+        divAlert.append($('<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'));
+        divAlert.append($('<span><strong>Error!</strong> Error al crear la orden.</span>'));
+
+        $('.alers-section').append(divAlert);
+        $log.debug('Element inserted.');
+
+    };
+
+  }; // BeveragesController and
 
 })();
