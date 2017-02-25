@@ -8,7 +8,8 @@
     <div class="panel-heading">
       <input ng-model="$ctrl.query" placeholder="Qué estás buscando?" />
       <div class="pull-right">
-        <button class="btn btn-primary" ng-click="$ctrl.makeOrder()">Realizar pedido!</button>
+        <button class="btn btn-primary" ng-class="{disabled: !$ctrl.total}" 
+          ng-click="$ctrl.makeOrder()">Realizar pedido!</button>
       </div>
       
     </div>
