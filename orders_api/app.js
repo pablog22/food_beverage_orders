@@ -22,6 +22,16 @@ if (cluster.isMaster) {
 var beverages = require('./routes/beverages');
 
 var server = restify.createServer();
+
+// http://stackoverflow.com/questions/14338683/how-can-i-support-cors-when-using-restify
+server.use(
+  function crossOrigin(req,res,next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    return next();
+  }
+);
+
 server.use(restify.bodyParser());
 
 server.get('/beverages', beverages.findAll);
