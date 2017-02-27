@@ -1,5 +1,5 @@
 {
-  "name": "pedidos_api",
+  "name": "orders_api",
   "version": "0.0.1",
   "description": "Aplicacion de pedidos",
   "main": "app.js",
