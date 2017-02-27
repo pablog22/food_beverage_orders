@@ -27,7 +27,7 @@ exports.addBeverage = function (req, res) {
 
 exports.findAllBevOrders = function (req, res) {
     console.log('Retrieving all beverages.');
-    db.collection('beverages_orders').find().toArray(function (err, docs) {
+    db.collection('beverages_orders').find().limit(50).toArray(function (err, docs) {
         res.send(docs);
     });
 };
