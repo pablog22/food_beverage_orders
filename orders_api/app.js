@@ -29,6 +29,7 @@ server.use(
   function crossOrigin(req,res,next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    //res.header("Allow", "GET,PUT, POST");
     return next();
   }
 );
@@ -40,6 +41,7 @@ server.get('/beverages', beverages.findAll);
 server.post('/beverages', beverages.addBeverage);
 server.get('/bev_orders', beverages.findAllBevOrders);
 server.post('/bev_orders', beverages.addBeverageOrder);
+server.put('/bev_orders_to_process', beverages.getBeverageOrderToProcess);
 
 server.listen(3000);
 console.log(`Worker ${process.pid} - Listening on port 3000...`);
