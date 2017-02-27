@@ -40,7 +40,7 @@ server.get('/bev_orders', beverages.findAllBevOrders);
 server.post('/bev_orders', beverages.addBeverageOrder);
 
 server.listen(3000);
-console.log('Listening on port 3000...');
+console.log(`Worker ${process.pid} - Listening on port 3000...`);
 
 }
 

@@ -13,7 +13,7 @@ db = new Db('pedidos', server);
 
 db.open(function(err, db) {
     if(!err) {
-        console.log("Connected to 'pedidos' database");
+        console.log(`Worker ${process.pid} - Connected to 'pedidos' database.`);
     }
 });
 
