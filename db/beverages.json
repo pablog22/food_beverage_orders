@@ -32,8 +32,7 @@
     "description": "Camacho 750cc",
     "cc": 750,
     "code": "t_camacho_750",
-    "price": 140,
-    "image": "images/w_blenders.jpg"
+    "price": 140
   },
   {
     "type": "tequila",
@@ -41,8 +40,7 @@
     "description": "Jose Cuervo Oro 750cc",
     "cc": 750,
     "code": "t_jose_cuervo_oro_750",
-    "price": 630,
-    "image": "images/w_blenders.jpg"
+    "price": 630
   },
   {
     "type": "tequila",
@@ -50,7 +48,6 @@
     "description": "Jose Cuervo Plata 750cc",
     "cc": 750,
     "code": "t_jose_cuervo_plata_750",
-    "price": 630,
-    "image": "images/w_blenders.jpg"
+    "price": 630
   }
 ]

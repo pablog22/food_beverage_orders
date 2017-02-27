@@ -9,11 +9,11 @@ var serverOptions = {
 };
 
 var server = new Server('localhost', 27017, serverOptions);
-db = new Db('pedidos', server);
+db = new Db('food_beverage_orders', server);
 
 db.open(function(err, db) {
     if(!err) {
-        console.log(`Worker ${process.pid} - Connected to 'pedidos' database.`);
+        console.log(`Worker ${process.pid} - Connected to 'food_beverage_orders' database.`);
     }
 });
 
