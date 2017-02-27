@@ -34,6 +34,7 @@ exports.findAllBevOrders = function (req, res) {
 
 exports.addBeverageOrder = function (req, res) {
     var order = req.body;
+    order.creationDate = new Date();
     //console.log('Adding beverage order: ' + JSON.stringify(order));
     db.collection('beverages_orders').insertOne(order, 
     function (err, result) {
