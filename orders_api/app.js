@@ -19,6 +19,7 @@ if (cluster.isMaster) {
 /////////
 // Routes
 
+var dummy = require('./routes/dummy');
 var beverages = require('./routes/beverages');
 
 var server = restify.createServer();
@@ -34,6 +35,7 @@ server.use(
 
 server.use(restify.bodyParser());
 
+server.get('/dummy100ms', dummy.dummy100ms);
 server.get('/beverages', beverages.findAll);
 server.post('/beverages', beverages.addBeverage);
 server.get('/bev_orders', beverages.findAllBevOrders);

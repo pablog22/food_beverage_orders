@@ -5,6 +5,7 @@ Example:
 https://www.youtube.com/watch?v=iprQ77q2cwk
 
 Run JMeter
+jmeter.bat -n -t Dummy100ms.jmx -l Dummy100ms.jtl -j Dummy100ms.log
 jmeter.bat -n -t AddBeverage.jmx -l AddBeverage.jtl -j AddBeverage.log
 
 
@@ -98,3 +99,20 @@ Tidying up ...    @ Mon Feb 20 10:21:08 ART 2017 (1487596868475)
 ... end of run
 
 FUNCIONA UN POCO MEJOR
+
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+// Probamos Dummy 100 ms con cluster y funciona de maravillas
+
+C:\dev\ws\food_beverage_orders\loadtest>jmeter.bat -n -t Dummy100ms.jmx -l Dummy100ms.jtl -j Dummy100ms.log
+Writing log file to: C:\dev\ws\food_beverage_orders\loadtest\Dummy100ms.log
+Creating summariser <summary>
+Created the tree successfully using Dummy100ms.jmx
+Starting the test @ Mon Feb 27 14:31:34 ART 2017 (1488216694421)
+Waiting for possible Shutdown/StopTestNow/Heapdump message on port 4445
+summary +      1 in 00:00:00 =    2.1/s Avg:   229 Min:   229 Max:   229 Err:     0 (0.00%) Active: 41 Started: 41 Finished: 0
+summary +  99999 in 00:00:24 = 4170.8/s Avg:   139 Min:   100 Max:   577 Err:     0 (0.00%) Active: 0 Started: 1000 Finished: 1000
+summary = 100000 in 00:00:24 = 4090.6/s Avg:   139 Min:   100 Max:   577 Err:     0 (0.00%)
+Tidying up ...    @ Mon Feb 27 14:31:58 ART 2017 (1488216718938)
+... end of run
