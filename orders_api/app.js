@@ -39,9 +39,11 @@ server.use(restify.bodyParser());
 server.get('/dummy100ms', dummy.dummy100ms);
 server.get('/beverages', beverages.findAll);
 server.post('/beverages', beverages.addBeverage);
+server.get('/bev_orders/:orderId', beverages.findBevOrder);
 server.get('/bev_orders', beverages.findAllBevOrders);
 server.post('/bev_orders', beverages.addBeverageOrder);
 server.put('/bev_orders_to_process', beverages.getBeverageOrderToProcess);
+server.put('/bev_orders/:orderId/IN_DELIVERY', beverages.setBeverageOrderToInDelivery);
 
 server.listen(3000);
 console.log(`Worker ${process.pid} - Listening on port 3000...`);
