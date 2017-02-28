@@ -45,6 +45,7 @@ server.post('/bev_orders', beverages.addBeverageOrder);
 server.put('/bev_orders_to_progress', beverages.putBeverageOrderInProgress);
 // server.put('/bev_orders/:orderId/IN_DELIVERY', beverages.setBeverageOrderToInDelivery);
 server.put('/bev_orders/:orderId/:newStatus', beverages.updateBeverageOrderStatus);
+server.put('/bev_orders/:orderId/:prevStatus/:newStatus', beverages.updateBeverageOrderStatusStrict);
 
 server.listen(3000);
 console.log(`Worker ${process.pid} - Listening on port 3000...`);
