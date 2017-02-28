@@ -70,9 +70,10 @@ exports.addBeverageOrder = function (req, res) {
 // Object retuned by mongodb:
 // http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#~findAndModifyWriteOpResult
 exports.getBeverageOrderToProcess = function (req, res) {
+    var historyRecord = {status: ORDER_STATUS_IN_PROGRESS, date: new Date()};
     db.collection('beverages_orders').findOneAndUpdate(
         {status : ORDER_STATUS_OPEN},
-        {$set: {status: ORDER_STATUS_IN_PROGRESS, inProgressDate: new Date()}},
+        {$set: {status: ORDER_STATUS_IN_PROGRESS}, $push: {statusHistory: historyRecord}},
         {returnOriginal: false},
         function (err, result) {
             if (err) {
@@ -104,9 +105,10 @@ exports.getBeverageOrderToProcess = function (req, res) {
 // http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#~findAndModifyWriteOpResult
 exports.setBeverageOrderToInDelivery = function (req, res) {
     var orderId = req.params.orderId;
+    var historyRecord = {status: ORDER_STATUS_IN_DELIVERY, date: new Date()};
     db.collection('beverages_orders').findOneAndUpdate(
         {_id: new ObjectID(orderId), status : ORDER_STATUS_IN_PROGRESS},
-        {$set: {status: ORDER_STATUS_IN_DELIVERY, inDeliveryDate: new Date()}},
+        {$set: {status: ORDER_STATUS_IN_DELIVERY}, $push: {statusHistory: historyRecord}},
         {returnOriginal: false},
         function (err, result) {
             if (err) {
