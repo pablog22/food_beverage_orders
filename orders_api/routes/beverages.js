@@ -8,6 +8,16 @@ const ORDER_STATUS_IN_PROGRESS = 'IN_PROGRESS';
 const ORDER_STATUS_IN_DELIVERY = 'IN_DELIVERY';
 const ORDER_STATUS_DELIVERED = 'DELIVERED';
 const ORDER_STATUS_CLOSED = 'CLOSED';
+const ORDER_STATUS_CANCELLED = 'CANCELLED';
+
+const statusList = [
+    ORDER_STATUS_OPEN,
+    ORDER_STATUS_IN_PROGRESS,
+    ORDER_STATUS_IN_DELIVERY,
+    ORDER_STATUS_DELIVERED,
+    ORDER_STATUS_CLOSED,
+    ORDER_STATUS_CANCELLED
+];
 
 exports.findAll = function (req, res) {
     console.log('Retrieving all beverages.');
@@ -77,7 +87,7 @@ exports.getBeverageOrderToProcess = function (req, res) {
         {returnOriginal: false},
         function (err, result) {
             if (err) {
-                res.send({ 'error': 
+                res.send(500, { 'error': 
                 'An error has occurred while setting one beverage order in process.' });
             } else {
                 var apiRes = {};
@@ -131,3 +141,48 @@ exports.setBeverageOrderToInDelivery = function (req, res) {
             }
         });
 }
+
+// Takes one order and updates its status.
+// If one order is found and its status is changed, and a 202 status is returned to the client.
+// If no open order is found a 412 status is returned to the client.
+// Object retuned by mongodb:
+// http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#~findAndModifyWriteOpResult
+exports.updateBeverageOrderStatus = function (req, res) {
+    var orderId = req.params.orderId;
+    var newStatus = req.params.newStatus;
+
+    // Checks if the new status is a supported status
+    var index = statusList.indexOf(newStatus);
+    if (index < 0) {
+        // Returns an error
+        res.send(412, 'Unsupported status.');
+    } else {
+        var historyRecord = {status: newStatus, date: new Date()};
+        db.collection('beverages_orders').findOneAndUpdate(
+            {_id: new ObjectID(orderId)},
+            {$set: {status: newStatus}, $push: {statusHistory: historyRecord}},
+            {returnOriginal: false},
+            function (err, result) {
+                if (err) {
+                    res.send(500, { 'error': 
+                    `An error has occurred while updating the beverage order with id ${orderId}.` });
+                } else {
+                    var apiRes = {};
+                    apiRes.db_result = result;
+
+                    if(result.lastErrorObject.updatedExisting) {
+                        apiRes.status = newStatus;
+                        apiRes.message = 
+                            `Order with id ${orderId} successfully uptated to status id ${newStatus}.`;
+                        apiRes.order_id = result.value._id;
+                        res.send(202, apiRes);
+                    } else {
+                        apiRes.message = `No order found with id ${orderId}.`;
+                        res.send(412, apiRes);
+                    }
+
+                }
+            });
+    }
+
+} // updateBeverageOrderStatus end
