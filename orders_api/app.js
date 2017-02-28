@@ -42,7 +42,7 @@ server.post('/beverages', beverages.addBeverage);
 server.get('/bev_orders/:orderId', beverages.findBevOrder);
 server.get('/bev_orders', beverages.findAllBevOrders);
 server.post('/bev_orders', beverages.addBeverageOrder);
-server.put('/bev_orders_to_process', beverages.getBeverageOrderToProcess);
+server.put('/bev_orders_to_progress', beverages.putBeverageOrderInProgress);
 // server.put('/bev_orders/:orderId/IN_DELIVERY', beverages.setBeverageOrderToInDelivery);
 server.put('/bev_orders/:orderId/:newStatus', beverages.updateBeverageOrderStatus);
 

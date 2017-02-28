@@ -79,7 +79,7 @@ exports.addBeverageOrder = function (req, res) {
 // If no open order is found a 412 status is returned to the client.
 // Object retuned by mongodb:
 // http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#~findAndModifyWriteOpResult
-exports.getBeverageOrderToProcess = function (req, res) {
+exports.putBeverageOrderInProgress = function (req, res) {
     var historyRecord = {status: ORDER_STATUS_IN_PROGRESS, date: new Date()};
     db.collection('beverages_orders').findOneAndUpdate(
         {status : ORDER_STATUS_OPEN},
