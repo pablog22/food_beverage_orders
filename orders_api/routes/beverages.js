@@ -55,20 +55,36 @@ exports.addBeverageOrder = function (req, res) {
     });
 }
 
-//
-// Takes one order and sets 
+// ORDER_STATUS_OPEN => ORDER_STATUS_IN_PROGRESS
+// Takes one order and sets it to be processed.
+// If one order is found and its status is changed, and a 202 status is returned to the client.
+// If no open order is found a 412 status is returned to the client.
+// Object retuned by mongodb:
 // http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#~findAndModifyWriteOpResult
 exports.getBeverageOrderToProcess = function (req, res) {
     db.collection('beverages_orders').findOneAndUpdate(
         {status : ORDER_STATUS_OPEN},
-        {$set: {status: ORDER_STATUS_IN_PROGRESS}},
+        {$set: {status: ORDER_STATUS_IN_PROGRESS, inProgressDate: new Date()}},
         {returnOriginal: false},
         function (err, result) {
             if (err) {
                 res.send({ 'error': 
                 'An error has occurred while setting one beverage order in process.' });
             } else {
-                res.send(result);
+                var apiRes = {};
+                apiRes.db_result = result;
+
+                if(result.lastErrorObject.updatedExisting) {
+                    apiRes.status = ORDER_STATUS_IN_PROGRESS;
+                    apiRes.message = 'Order successfully uptated to be processed.';
+                    apiRes.order_id = result.value._id;
+                    apiRes.db_result = result;
+                    res.send(202, apiRes);
+                } else {
+                    apiRes.message = 'No order open to be processed.';
+                    res.send(412, apiRes);
+                }
+
             }
         });
 }
