@@ -44,13 +44,8 @@ server.use(restify.bodyParser());
 
 server.get('/dummy100ms', dummy.dummy100ms);
 server.get('/beverages', beverages.findAll);
-server.post('/beverages', beverages.addBeverage);
-server.get('/bev_orders/:orderId', beverages.findBevOrder);
-server.get('/bev_orders', beverages.findAllBevOrders);
+//server.post('/beverages', beverages.addBeverage);
 server.post('/bev_orders', beverages.addBeverageOrder);
-server.put('/bev_orders_to_progress', beverages.putBeverageOrderInProgress);
-server.put('/bev_orders/:orderId/:newStatus', beverages.updateBeverageOrderStatus);
-server.put('/bev_orders/:orderId/:prevStatus/:newStatus', beverages.updateBeverageOrderStatusStrict);
 
 server.listen(3000);
 console.log(`Worker ${process.pid} - Listening on port 3000...`);
