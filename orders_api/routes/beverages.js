@@ -1,7 +1,7 @@
-var mongoconnection = require('./../db/mongoconnection');
+var mongoUtil = require('./../db/mongoUtil');
 var ObjectID = require('mongodb').ObjectID;
 
-var db = mongoconnection.db;
+var db = mongoUtil.getDb();
 
 const ORDER_STATUS_OPEN = 'OPEN';
 
